@@ -32,6 +32,7 @@
   - Keep changes minimal, focused, and scoped strictly to the user request.
   - Prefer editing existing files over creating new ones.
   - Do not add new tooling or dependencies without explicit user confirmation.
+  - **No Emojis:** Never use emojis in code, variable names, or comments.
   - **Consistency:** Maintain strict uniformity with existing patterns to reduce cognitive load.
   - **Good Taste:** Prefer elegant, idiomatic solutions for long-term maintainability.
   - **Simplicity:** Reject unnecessary complexity; it is the enemy of security and reliability.
@@ -46,8 +47,9 @@
   - **READ-ONLY IS SAFE:** You may use `git status`, `git log`, `git diff`, `git show` freely for context.
   - **WRITE IS FORBIDDEN (NO AUTO-RUN):** Do not execute git write operations without explicit user confirmation after explaining impact (e.g., `git commit`, `git push`, `git rebase`).
   - **Examples of git write operations (including but not limited to):** `git add`, `git rm`, `git commit`, `git push`, `git merge`, `git rebase`, `git checkout`, `git switch`, `git cherry-pick`, `git revert`.
+  - **Atomic Commits:** Propose separate commits for logically distinct changes (e.g., bug fix vs. refactor). Do not lump unrelated changes into a single monolithic commit.
   - **PROTOCOL FOR WRITES:** If a task requires git state changes, STOP execution; PRINT the exact command(s) you intend to run; WAIT for explicit user confirmation (e.g., "Run it").
   - **NO DESTRUCTIVE ACTIONS:** `git reset --hard`, `git clean`, and similar destructive operations are forbidden unless directly requested, and require double-confirmation.
 
 - **Formatting**
-  - Ensure exactly one blank line follows every Markdown heading.
+  - Ensure exactly one blank line follows every section title (e.g., Markdown headings like `#`, `##`, or `**Title**`).
