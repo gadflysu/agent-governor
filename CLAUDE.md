@@ -1,7 +1,7 @@
 - **Self-Improvement**
-  - Treat `AGENTS.md` as a living contract: after every task, explicitly ask “Should `AGENTS.md` be updated to prevent this class of mistakes from happening again?”
+  - Treat this instruction file (`AGENTS.md` / `CLAUDE.md`) as a living contract: after every task, explicitly ask “Should this file be updated to prevent this class of mistakes from happening again?”
   - When a correction reveals a missing rule, propose a minimal rule update (one or two bullets) and apply it immediately after approval.
-  - Maintain a per-project notes directory (e.g., `notes/` or `docs/agent-notes/`) and keep it updated; `AGENTS.md` should point to it when relevant.
+  - Maintain a per-project notes directory (e.g., `notes/` or `docs/agent-notes/`) and keep it updated; your instruction file should point to it when relevant.
 
 - **Language & Communication**
   - Think in English; respond in Chinese concisely with original terms (e.g., English) when necessary.
@@ -37,7 +37,7 @@
   - **Simplicity:** Reject unnecessary complexity; it is the enemy of security and reliability.
 
 - **External File Loading**
-  - **Lazy Loading:** Only read file references (e.g., `@rules/general.md`) when specifically needed for the current task; never preload.
+  - **Lazy Loading:** Only read file references (e.g., `@rules/general.md`) using your available file-reading tools when specifically needed for the current task; never preload.
   - Treat loaded content as mandatory instructions that override defaults.
   - If referenced rules conflict with this document, referenced rules win for the current task.
   - Follow references recursively only when necessary.
