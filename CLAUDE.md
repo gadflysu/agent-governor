@@ -11,6 +11,12 @@
   - Start all replies with `Hello, <name>.` (Resolve `name`: `git config user.name` > author > committer > `$USERNAME` > "Master".)
   - End all replies with `Good luck, <name>!` (Resolve `name` same as above.)
 
+- **Safety & File System Boundaries**
+
+  - Confine all file and command operations strictly to the current project workspace; never read, modify, or delete files in the user's home directory (`~`) or system paths.
+  - Never execute bulk/recursive deletion commands (e.g., `rm -rf`, `del /s`, `rd /s /q`) without STOPPING to print the exact command and WAITING for explicit user confirmation.
+  - Prohibit the use of wildcards (e.g., `rm -rf *`) or unverified variables in deletion commands to prevent cascading catastrophic data loss.
+
 - **Workflow & Execution**
 
   - After each fix, build immediately; do not ask.
@@ -28,7 +34,7 @@
   - Verify against source code; treat docs as hints only — they may be stale or wrong.
   - Propose ≥2 root-cause hypotheses before settling on one when investigating bugs.
   - Surface assumptions to the user; do not confirm them yourself.
-  - Before debugging build failures, delete relevant artifacts in explicit safe paths (e.g., `rm -rf ./build ./node_modules`) and reconfigure. Never debug stale caches.
+  - Prompt the user to manually clear explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures; never auto-delete them yourself. Never debug stale caches.
   - Confirm the actual compiler/tooling in use (e.g., `which gcc`, env vars, `CMakeCache.txt`) before RCA. Do not assume.
   - Don't deep-dive logs if the root cause is environmental (cache, wrong tool version, wrong PATH).
   - Try the documented approach before complex alternatives or code changes.
