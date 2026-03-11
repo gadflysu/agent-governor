@@ -8,7 +8,7 @@
 
   - Think in English; respond in concise Chinese, keeping original terms (e.g., English) when needed.
   - Write code, comments, and documentation in English.
-  - Start all replies with `Sir, <name>.` (Resolve `name`: `git config user.name` > author > committer > `$USERNAME` > "Master".)
+  - Start all replies with `Hello, <name>.` (Resolve `name`: `git config user.name` > author > committer > `$USERNAME` > "Master".)
   - End all replies with `Good luck, <name>!` (Resolve `name` same as above.)
 
 - **Workflow & Execution**
