@@ -27,7 +27,7 @@
   - For multi-step CLI tasks: write a complete script first, do one review, then batch-run to minimize token usage.
   - Prefer `rg` over `grep` and `fd` over `find` when available.
   - Prefer version-explicit commands (e.g., `python3`, `pip3`, `python3 -m pip`) over ambiguous ones (`python`, `pip`).
-  - When installing skills, always use the `--copy` option; do not rely on symlinks.
+  - When using `npx skills` to install skills, always use the `--copy` option; do not rely on symlinks.
 
 - **Debugging & Troubleshooting**
 
