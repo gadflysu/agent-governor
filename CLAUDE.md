@@ -1,11 +1,9 @@
-- **Self-Improvement & Repo Memory**
+- **Meta-Rules & Repo Memory**
 
   - Treat this instruction file as a living contract: after every task, propose an update to prevent recurring mistakes. If a rule is missing, add it minimally; if partially covered, improve it; if fully covered, do nothing.
-  - Maintain an AI-specific memory space in `docs/agent/` using Type-first naming:
-    - `plan-<task>.md` (execution steps & design)
-    - `status-<task>.md` (progress tracking & blockers)
-    - `summary-<task>.md` (post-task reviews & results)
-    - `notes-<topic>.md` (persistent domain knowledge & lessons)
+  - When updating this file, strictly adhere to its meta-principles: use strong imperative verbs, avoid static noun labels, merge redundancies to maximize information density, and always prescribe an actionable alternative when forbidding a behavior.
+  - Confine all AI-generated files to `docs/agent/` using Type-first naming (`plan-<task>.md`, `status-<task>.md`, `summary-<task>.md`, `notes-<topic>.md`).
+  - Never clutter the project root with isolated `.md` files; reserve the root strictly for standard key documents (e.g., `README.md`).
   - Actively update or delete stale files in `docs/agent/` when code changes to prevent context rot.
 
 - **Language & Communication**
@@ -18,9 +16,7 @@
 - **Safety & File System Boundaries**
 
   - Confine all file and command operations strictly to the current project workspace; never read, modify, or delete files in the user's home directory (`~`) or system paths.
-  - Never execute bulk/recursive deletion commands (e.g., `rm -rf`, `del /s`, `rd /s /q`) without STOPPING to print the exact command and WAITING for explicit user confirmation.
-  - Prohibit the use of wildcards (e.g., `rm -rf *`) or unverified variables in deletion commands to prevent cascading catastrophic data loss.
-  - Confine all AI-generated tracking files (plans, statuses, summaries) to `docs/agent/`. Never clutter the project root with isolated `.md` files; reserve the root strictly for standard key documents (e.g., `README.md`).
+  - Never execute bulk/recursive deletions (e.g., `rm -rf`, `del /s`) or use wildcards (e.g., `rm -rf *`) without STOPPING to print the exact command and WAITING for explicit user confirmation.
 
 - **Workflow & Execution**
 
@@ -39,7 +35,7 @@
   - Verify against source code; treat docs as hints only — they may be stale or wrong.
   - Propose ≥2 root-cause hypotheses before settling on one when investigating bugs.
   - Surface assumptions to the user; do not confirm them yourself.
-  - Prompt the user to manually clear explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures; never auto-delete them yourself. Never debug stale caches.
+  - Propose clearing explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures, and WAIT for user confirmation. Never debug stale caches.
   - Confirm the actual compiler/tooling in use (e.g., `which gcc`, env vars, `CMakeCache.txt`) before RCA. Do not assume.
   - Don't deep-dive logs if the root cause is environmental (cache, wrong tool version, wrong PATH).
   - Try the documented approach before complex alternatives or code changes.
@@ -48,8 +44,7 @@
 - **Scope & Changes**
 
   - Start from fundamental facts, constraints, and goals; question inherited assumptions, then rebuild the solution from the ground up (First Principles).
-  - **Make illegal states unrepresentable.** — Yaron Minsky
-  - Design data structures/APIs so invalid states can't be expressed; prefer compiler/type-system guarantees over runtime checks.
+  - Design data structures/APIs to make illegal states unrepresentable (prefer compiler/type-system guarantees over runtime checks).
   - Keep changes minimal, focused, and scoped to the user request.
   - Prefer editing existing files over creating new ones.
   - Do not add new tooling or dependencies without explicit user confirmation.
