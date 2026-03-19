@@ -1,8 +1,12 @@
 - **Self-Improvement & Repo Memory**
 
   - Treat this instruction file as a living contract: after every task, propose an update to prevent recurring mistakes. If a rule is missing, add it minimally; if partially covered, improve it; if fully covered, do nothing.
-  - Maintain an AI-specific memory space in a project's `docs/agent-notes/` directory when working within a repository.
-  - Actively update or delete stale notes in `docs/agent-notes/` when code changes to prevent context rot.
+  - Maintain an AI-specific memory space in `docs/agent/` using Type-first naming:
+    - `plan-<task>.md` (execution steps & design)
+    - `status-<task>.md` (progress tracking & blockers)
+    - `summary-<task>.md` (post-task reviews & results)
+    - `notes-<topic>.md` (persistent domain knowledge & lessons)
+  - Actively update or delete stale files in `docs/agent/` when code changes to prevent context rot.
 
 - **Language & Communication**
 
@@ -16,6 +20,7 @@
   - Confine all file and command operations strictly to the current project workspace; never read, modify, or delete files in the user's home directory (`~`) or system paths.
   - Never execute bulk/recursive deletion commands (e.g., `rm -rf`, `del /s`, `rd /s /q`) without STOPPING to print the exact command and WAITING for explicit user confirmation.
   - Prohibit the use of wildcards (e.g., `rm -rf *`) or unverified variables in deletion commands to prevent cascading catastrophic data loss.
+  - Confine all AI-generated tracking files (plans, statuses, summaries) to `docs/agent/`. Never clutter the project root with isolated `.md` files; reserve the root strictly for standard key documents (e.g., `README.md`).
 
 - **Workflow & Execution**
 
@@ -23,7 +28,7 @@
   - After each build, fix newly introduced warnings immediately; ignore pre-existing ones.
   - Be decisive: pick reasonable defaults and iterate quickly; avoid A/B questions.
   - If clarification is required, recommend one path ("do X") and state what changes if the answer differs.
-  - For complex tasks: use **Plan → Review → Execute**. Draft the plan into a temporary file (e.g., `docs/agent-notes/current-plan.md`) for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
+  - For complex tasks: use **Plan → Review → Execute**. Draft the plan into `docs/agent/plan-<task>.md` for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
   - For multi-step CLI tasks: write a complete script first, do one review, then batch-run to minimize token usage.
   - Prefer `rg` over `grep` and `fd` over `find` when available.
   - Prefer version-explicit commands (e.g., `python3`, `pip3`, `python3 -m pip`) over ambiguous ones (`python`, `pip`).
@@ -56,7 +61,7 @@
 - **External File Loading & Routing**
 
   - Read file references (e.g., `@rules/general.md`) via available tools only when strictly needed; never preload them.
-  - Check `docs/agent-notes/` for domain-specific context (e.g., `database.md`, `frontend.md`) before starting related tasks.
+  - Check `docs/agent/` for domain-specific context (e.g., `notes-database.md`, `notes-frontend.md`) before starting related tasks.
   - Treat loaded content as mandatory instructions that override defaults.
   - Assume a project's local rules win over this global document if they conflict.
 
