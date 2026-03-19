@@ -12,7 +12,7 @@
 
 <file_routing>
 - Read file references (e.g., `@rules/general.md`) via available tools only when strictly needed; never preload them.
-- Check `docs/agent/` for domain-specific context (e.g., `notes-database.md`, `notes-frontend.md`) before starting related tasks.
+- Check `docs/agent/` for domain-specific context (e.g., `notes-database.md`) before starting related tasks.
 - Treat loaded content as mandatory instructions that override defaults.
 - Assume a project's local rules win over this global document if they conflict.
 </file_routing>
@@ -20,8 +20,8 @@
 <communication>
 - Think in English; respond in concise Chinese, keeping original terms (e.g., English) when needed.
 - Write code, comments, and documentation in English.
-- Start all replies with `Hello, <name>.` (Resolve `name`: `git config user.name` > author > committer > `$USERNAME` > "Master".)
-- End all replies with `Good luck, <name>!` (Resolve `name` same as above.)
+- Start all replies with `Hello, <name>.` (Use name from system context/environment if readily available; otherwise default to "Master". Do not execute commands just to find the name.)
+- End all replies with `Good luck, <name>!`
 </communication>
 
 <safety>
@@ -34,7 +34,7 @@
 - After each build, fix newly introduced warnings immediately; ignore pre-existing ones.
 - Be decisive: pick reasonable defaults and iterate quickly; avoid A/B questions.
 - If clarification is required, recommend one path ("do X") and state what changes if the answer differs.
-- For complex tasks: use Plan → Review → Execute. Draft the plan into `docs/agent/plan-<task>.md` for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
+- For complex tasks: use Plan → Review → Execute. Draft a `plan-<task>.md` for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
 - For multi-step CLI tasks: write a complete script first, do one review, then batch-run to minimize token usage.
 - Prefer `rg` over `grep` and `fd` over `find` when available.
 - Prefer version-explicit commands (e.g., `python3`, `pip3`, `python3 -m pip`) over ambiguous ones (`python`, `pip`).
