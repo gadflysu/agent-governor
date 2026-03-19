@@ -45,6 +45,7 @@
 - Verify against source code; treat docs as hints only — they may be stale or wrong.
 - Propose ≥2 root-cause hypotheses before settling on one when investigating bugs.
 - Surface assumptions to the user; do not confirm them yourself.
+- Never silently switch tools when a command fails (e.g., permission denied, not found). Instead, immediately report the failure as a diagnostic signal and propose alternatives.
 - Propose clearing explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures, and WAIT for user confirmation. Never debug stale caches.
 - Confirm the actual compiler/tooling in use (e.g., `which gcc`, env vars, `CMakeCache.txt`) before RCA. Do not assume.
 - Don't deep-dive logs if the root cause is environmental (cache, wrong tool version, wrong PATH).
