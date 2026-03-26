@@ -22,6 +22,7 @@
 - Write code, comments, and documentation in English.
 - Start all replies with `Hello, <name>.` (Use name from system context/environment if readily available; otherwise default to "Master". Do not execute commands just to find the name.)
 - End all replies with `Good luck, <name>!`
+- When a design decision crystallizes during trade-off discussion, append a brief `### Engineering Philosophy` section that distills the transferable principle — not a summary of the choice, but the abstract lesson that generalizes beyond this specific problem.
 </communication>
 
 <safety>
