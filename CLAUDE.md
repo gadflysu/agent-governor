@@ -31,13 +31,16 @@
 </safety>
 
 <workflow>
+- Detect task complexity from context and activate the appropriate protocol: trivial fixes execute immediately with no ceremony; non-trivial tasks must complete the full Clarify → Plan → Execute → Verify sequence without skipping or collapsing stages.
+- Detect the development mode from context and switch behavior accordingly: in Supervised mode (default), pause at decision points and surface trade-offs for user judgment; in Autonomous mode, own the task end-to-end, sustain continuous iteration cycles, and self-recover from blockers without surfacing interruptions.
+- Draft a `plan-<task>.md` for complex tasks. Every plan item must include exact target files, the intended change, and a concrete verification step.
+- Execute against the approved plan. If blocked or surprised, stop, update `status-<task>.md`, and re-plan.
+- For tasks with a measurable evaluation signal, use a ratchet loop: make one isolated change, run the evaluation, keep it only if the result improves, otherwise revert.
 - After each fix, build immediately; do not ask.
 - After each build, fix newly introduced warnings immediately; ignore pre-existing ones.
-- Be decisive: pick reasonable defaults and iterate quickly; avoid A/B questions.
-- If clarification is required, recommend one path ("do X") and state what changes if the answer differs.
-- For complex tasks: use Plan → Review → Execute. Draft a `plan-<task>.md` for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
+- Be decisive: pick reasonable defaults and iterate quickly; avoid open-ended A/B questions. If clarification is required, recommend one path ("do X") and state what changes if the answer differs.
 - For multi-step CLI tasks: write a complete script first, do one review, then batch-run to minimize token usage.
-- Prefer `rg` over `grep` and `fd` over `find` when available.
+- Prefer modern, high-performance CLI tools over legacy equivalents to maximize efficiency (e.g., use `rg` over `grep`, and `fd` over `find` when available).
 - Prefer version-explicit and environment-bound commands to prevent PATH conflicts (e.g., use `python3 -m pip` over `pip`; use `npx` or `nvm exec` over global binaries).
 - When using `npx skills` to install skills, always use the `--copy` option; do not rely on symlinks.
 </workflow>
@@ -68,7 +71,10 @@
 
 <git_operations>
 - Use read-only git commands (`status`, `log`, `diff`, `show`) freely for context.
-- Never auto-run git write operations (e.g., `add`, `commit`, `push`, `rebase`). Instead, STOP, PRINT the exact command(s), explain the impact, and WAIT for explicit user confirmation.
-- Propose separate commits for logically distinct changes (e.g., bug fix vs. refactor); avoid monolithic commits. Wave-based execution enables surgical rollbacks.
-- Never execute destructive actions (`git reset --hard`, `git clean`) without direct user request and double-confirmation.
+- Propose separate atomic commits for logically distinct changes (e.g., bug fix vs. refactor); avoid monolithic commits. Wave-based execution enables surgical rollbacks.
+- When in Supervised mode (default), never auto-run git write operations (e.g., `add`, `commit`, `push`, `rebase`). STOP, PRINT the exact command(s), explain the impact, and WAIT for explicit user confirmation.
+- When in Autonomous mode, execute git writes autonomously using a strict forward-only policy to preserve history on feature branches.
+- Undo mistakes using `git revert` in Autonomous mode; NEVER use destructive commands like `git reset --hard` or `git clean`.
+- Prevent garbage history in Autonomous mode by using `git commit --amend` for extremely small, same-scope iterations where the previous commit message remains completely accurate.
+- Clean up history using interactive rebase (`git rebase -i`) when finishing a dev task, preparing to merge to the main branch, or returning control to the user. (Hint: use `GIT_SEQUENCE_EDITOR` or similar non-interactive programmatic overrides to execute rebases autonomously without hanging the terminal).
 </git_operations>
