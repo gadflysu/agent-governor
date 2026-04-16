@@ -1,13 +1,13 @@
 <meta_rules>
-- Treat this instruction file as a living contract: after every task, propose an update to prevent recurring mistakes. If a rule is missing, add it minimally; if partially covered, improve it; if fully covered, do nothing.
+- Treat this instruction file as a living contract: after every task, propose a minimal update only if it prevents recurring mistakes or improves execution quality.
 - Strictly adhere to these meta-principles when updating: use strong imperative verbs, avoid static noun labels, merge redundancies to maximize information density, and always prescribe an actionable alternative when forbidding a behavior.
 </meta_rules>
 
 <repo_memory>
 - Confine all AI-generated files to `docs/agent/` using Type-first naming (`plan-<task>.md`, `status-<task>.md`, `summary-<task>.md`, `notes-<topic>.md`).
+- Rehydrate context before acting: at the start of each new session or task, read the relevant files in `docs/agent/` to recover the current state and historical decisions before making changes.
 - Never clutter the project root with isolated `.md` files; reserve the root strictly for standard key documents (e.g., `README.md`).
 - Actively update or delete stale files in `docs/agent/` when code changes to prevent context rot.
-- Rehydrate Context: Upon starting a new session or task, always check `docs/agent/` for relevant `plan` or `status` files to resume progress before taking action.
 </repo_memory>
 
 <file_routing>
@@ -38,12 +38,12 @@
 - For complex tasks: use Plan → Review → Execute. Draft a `plan-<task>.md` for review, include verification steps, and delete/archive it upon completion. If blocked or surprised during execution, stop and re-plan.
 - For multi-step CLI tasks: write a complete script first, do one review, then batch-run to minimize token usage.
 - Prefer `rg` over `grep` and `fd` over `find` when available.
-- Prefer version-explicit commands (e.g., `python3`, `pip3`, `python3 -m pip`) over ambiguous ones (`python`, `pip`).
+- Prefer version-explicit and environment-bound commands to prevent PATH conflicts (e.g., use `python3 -m pip` over `pip`; use `npx` or `nvm exec` over global binaries).
 - When using `npx skills` to install skills, always use the `--copy` option; do not rely on symlinks.
 </workflow>
 
 <debugging>
-- Verify against source code; treat docs as hints only — they may be stale or wrong.
+- Verify against source code and real runtime behavior; treat docs as hints only — they may be stale or wrong.
 - Propose ≥2 root-cause hypotheses before settling on one when investigating bugs.
 - Surface assumptions to the user; do not confirm them yourself.
 - Never silently switch tools when a command fails (e.g., permission denied, not found). Instead, immediately report the failure as a diagnostic signal and propose alternatives.
@@ -55,13 +55,13 @@
 </debugging>
 
 <scope_and_architecture>
-- Start from fundamental facts, constraints, and goals; question inherited assumptions, then rebuild the solution from the ground up (First Principles).
+- Start from fundamental facts, constraints, and goals; question inherited assumptions, then rebuild the solution from the ground up.
+- Adapt to the real architecture you see: match existing code patterns to maintain consistency, rather than imposing external paradigms.
+- Execute surgical changes: keep edits minimal, focused, and strictly scoped to the user's explicit goal.
 - Design data structures/APIs to make illegal states unrepresentable (prefer compiler/type-system guarantees over runtime checks).
-- Keep changes minimal, focused, and scoped to the user request.
 - Prefer editing existing files over creating new ones.
 - Do not add new tooling or dependencies without explicit user confirmation.
 - Never use emojis in code, identifiers, or comments.
-- Match existing code patterns to maintain consistency and reduce cognitive load.
 - Prefer elegant, idiomatic solutions for long-term maintainability.
 - Reject unnecessary complexity; it undermines security and reliability.
 </scope_and_architecture>
@@ -69,6 +69,6 @@
 <git_operations>
 - Use read-only git commands (`status`, `log`, `diff`, `show`) freely for context.
 - Never auto-run git write operations (e.g., `add`, `commit`, `push`, `rebase`). Instead, STOP, PRINT the exact command(s), explain the impact, and WAIT for explicit user confirmation.
-- Propose separate commits for logically distinct changes (e.g., bug fix vs. refactor); avoid monolithic commits.
+- Propose separate commits for logically distinct changes (e.g., bug fix vs. refactor); avoid monolithic commits. Wave-based execution enables surgical rollbacks.
 - Never execute destructive actions (`git reset --hard`, `git clean`) without direct user request and double-confirmation.
 </git_operations>
