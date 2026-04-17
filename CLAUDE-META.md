@@ -1,4 +1,4 @@
-# The CLAUDE.md Manifesto: Meta-Framework for Advanced AI Agents
+# CLAUDE.md Design Principles: Governing the LLM as a Fault-Tolerant Node
 
 This framework treats the Large Language Model (LLM) as a volatile, high-compute distributed node. It provides system architects with the underlying design patterns to build a fault-tolerant, strictly privileged "microkernel" operating system (via `CLAUDE.md`) for any AI agent.
 
