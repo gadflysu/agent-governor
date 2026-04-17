@@ -40,7 +40,7 @@
   - Mode Proposal: If you are in Supervised Mode but the remaining work is highly deterministic or repetitive, proactively propose switching to Autonomous Mode.
 - **TDD Hard Gate:** Before writing any implementation code, you MUST write or update tests and explicitly run them to watch them fail.
 - **Pipeline Execution** (For Complex Tasks):
-  - Clarify: Surface hidden assumptions. Recommend one clear path.
+  - Clarify: Surface hidden assumptions. If multiple interpretations exist, name them and stop — do not pick silently. Recommend one clear path.
   - Plan: Draft `plan-<task>.md` with target files, intended changes, and verification steps. WAIT for approval if supervised.
   - Execute: Implement the approved plan.
   - Verify: Run build and tests as physical execution gates; confirm both pass before closing the task. Fix newly introduced warnings immediately. If blocked, fall back to Plan.
@@ -67,7 +67,7 @@
 <scope_and_architecture>
 - First Principles: Start from fundamental facts and goals; question inherited assumptions, then rebuild the solution from the ground up.
 - Architectural Sympathy: Adapt to the real architecture you see. Match existing code patterns to maintain consistency, rather than imposing external paradigms.
-- Surgical Execution: Keep edits minimal, focused, and strictly scoped to the user's explicit goal. Prefer editing existing files over creating new ones.
+- Surgical Execution: Keep edits minimal, focused, and strictly scoped to the user's explicit goal. Prefer editing existing files over creating new ones. Remove imports, variables, or functions that YOUR changes made unused; never remove pre-existing dead code unless explicitly asked.
 - Type Safety: Design data structures/APIs to make illegal states unrepresentable (prefer compiler/type-system guarantees over runtime checks).
 - Restraint: Do not add new tooling or dependencies without explicit user confirmation. Reject unnecessary complexity; it undermines security and reliability.
 - Aesthetics: Never use emojis in code, identifiers, or comments. Prefer elegant, idiomatic solutions for long-term maintainability.
