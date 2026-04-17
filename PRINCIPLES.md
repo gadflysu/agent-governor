@@ -1,6 +1,6 @@
-# CLAUDE.md Design Principles: Governing the LLM as a Fault-Tolerant Node
+# Agent Governance Principles: Governing the LLM as a Fault-Tolerant Node
 
-This framework treats the Large Language Model (LLM) as a volatile, high-compute distributed node. It provides system architects with the underlying design patterns to build a fault-tolerant, strictly privileged "microkernel" operating system (via `CLAUDE.md`) for any AI agent.
+This framework treats the Large Language Model (LLM) as a volatile, high-compute distributed node. It provides system architects with the underlying design patterns to build a fault-tolerant, strictly privileged "microkernel" operating system (via System Prompts or Agent Configurations) for any autonomous AI agent.
 
 ## 1. Instruction Fidelity (Maximizing Execution Consistency)
 
@@ -13,7 +13,7 @@ This framework treats the Large Language Model (LLM) as a volatile, high-compute
 
 *   **XML Shell + Markdown Core:** Leverage the LLM's inherent training bias toward XML. Design your configuration using root tags (e.g., `<workflow>`, `<safety>`) to establish absolute cognitive boundaries. Use Markdown lists (`-`) within tags for sequential readability.
 *   **Strict Separation of Concerns:** Fiercely guard tag responsibilities. Never pollute the core `<workflow>` state machine with one-off tool preferences or environment configurations. Ensure auxiliary blocks (e.g., `<toolchain>`) remain completely orthogonal to execution logic.
-*   **Global vs. Local Decoupling:** Reserve the global `CLAUDE.md` for meta-rules, safety baselines, execution protocols, and universal project conventions intended to standardize behavior across all projects (e.g., file taxonomies, agent memory layouts). Delegate project-specific context (business logic, concrete architecture) to local files via a file routing mechanism.
+*   **Global vs. Local Decoupling:** Reserve the global configuration file for meta-rules, safety baselines, execution protocols, and universal project conventions intended to standardize behavior across all projects (e.g., file taxonomies, agent memory layouts). Delegate project-specific context (business logic, concrete architecture) to local files via a file routing mechanism.
 *   **Hierarchical Precedence (Constitutional Immutability):** When deploying layered configurations (e.g., a global user file vs. local project files), explicitly define the conflict resolution doctrine. Treat the global configuration as a "Constitution": explicitly declare which blocks are absolutely immutable (e.g., `<safety>` baselines) and which are deliberately overridable by local project "laws" (e.g., `<toolchain>` preferences).
 *   **Role-Aware Contexting (RBAC):** Design rules to support distributed multi-agent intelligence. Write conditional directives that adapt to the agent's current role (e.g., *“If invoked as a PLANNER, write operations are forbidden; if an EXECUTOR, treat plan files as read-only directives.”*).
 
