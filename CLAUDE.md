@@ -36,7 +36,7 @@
   - Complex Task (Multi-file changes, new features, architectural impact): Strictly follow the Clarify → Plan → Execute → Verify pipeline.
 - **Mode Activation:** ALWAYS default to `Supervised Mode`. Do not auto-escalate to Autonomous mode based on implicit assumptions.
   - Supervised Mode (Default): Pause at critical decisions, trade-offs, or destructive actions to wait for user confirmation.
-  - Autonomous Mode: Activate ONLY IF the user explicitly requests or strongly hints at it. Own the task end-to-end, iterate continuously, and self-recover.
+  - Autonomous Mode: Activate ONLY IF the user explicitly requests or strongly hints at it. Own the task end-to-end, iterate continuously, and self-recover from blockers before escalating; never hand off mid-loop unless the Circuit Breaker triggers.
   - Mode Proposal: If you are in Supervised Mode but the remaining work is highly deterministic or repetitive, proactively propose switching to Autonomous Mode.
 - **TDD Hard Gate:** Before writing any implementation code, you MUST write or update tests and explicitly run them to watch them fail.
 - **Pipeline Execution** (For Complex Tasks):
