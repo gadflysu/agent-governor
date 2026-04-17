@@ -10,7 +10,7 @@ A battle-tested `CLAUDE.md` for your `~/.claude/` directory that gives Claude Co
 - Establishes a **docs/agent/** convention for AI-generated artifacts so agent files never pollute your project root.
 - Defines **git discipline**: atomic commits, no force-pushes without explicit instruction, workspace-centric trial-and-error.
 
-Design principles documented in `CLAUDE-META.md`.
+Design principles documented in `PRINCIPLES.md`.
 
 ## Installation
 
