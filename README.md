@@ -32,6 +32,12 @@ curl -fsSL https://raw.githubusercontent.com/gadflysu/agent-governor/master/AGEN
 
 Place an `AGENTS.md` (or platform equivalent) at project root to override non-safety rules. The `<safety>` block is immutable — project files cannot weaken it.
 
+## Contributing
+
+This framework is a living document. PRs that improve structural rigidity and fault-tolerance of agent workflows are welcome. PRs that introduce project-specific business logic or opinionated styling choices are not.
+
+Keep the governance pure.
+
 ## License
 
 MIT
