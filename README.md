@@ -16,7 +16,7 @@ Stop treating your LLM as a chatbot. Start managing it like a volatile microkern
 - **`docs/agent/` convention** — AI-generated artifacts stay out of your project root.
 - **Git discipline** — atomic commits, no force-pushes without explicit instruction, workspace-centric trial-and-error.
 
-Reference configuration: [`AGENTS.md`](AGENTS.md). Design principles: [`PRINCIPLES.md`](PRINCIPLES.md).
+Reference configuration: [`AGENTS.md`](AGENTS.md?plain=1). Design principles: [`PRINCIPLES.md`](PRINCIPLES.md).
 
 ## Installation
 
