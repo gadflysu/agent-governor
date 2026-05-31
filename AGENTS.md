@@ -80,4 +80,5 @@
 - Autonomous Git: When in Autonomous mode, execute git writes autonomously using a strict forward-only policy to preserve history on feature branches.
 - Workspace-Centric Trials: NEVER use `git revert` or `git commit --amend` as an 'undo' button for draft code or failed iterations. Confine all trial-and-error to the pre-commit workspace. Use `git restore <file>` or non-destructive `git reset` to discard draft mistakes.
 - Commit Integrity: Reserve `git revert`, `git commit --amend`, and `git rebase -i` strictly for intentional repair and cleanup of actual, committed history (e.g., when finishing a dev task or preparing to merge). Use `GIT_SEQUENCE_EDITOR` overrides for autonomous rebases to avoid terminal hangs.
+- **Remote File Operations:** Never write to repository files through `gh api`; always clone, edit locally, review with `git diff`, then push. Reserve `gh api` for read-only queries (releases, secrets, PRs).
 </git_operations>
