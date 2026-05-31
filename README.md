@@ -40,6 +40,8 @@ curl -fsSL https://raw.githubusercontent.com/gadflysu/agent-governor/master/AGEN
   -o ~/.claude/CLAUDE.md
 ```
 
+Or use `./install.sh` to deploy to Claude Code, Codex, and Gemini CLI automatically.
+
 ## Project-level overrides
 
 Place an `AGENTS.md` (or platform equivalent) at project root to override non-safety rules. The `<safety>` block is immutable — project files cannot weaken it.
