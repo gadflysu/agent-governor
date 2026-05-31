@@ -8,6 +8,7 @@ This framework treats the Large Language Model (LLM) as a volatile, high-compute
 - **Anchored Imperatives (Key-Value Prompting):** Prefix imperative commands with a bolded noun phrase acting as a semantic anchor (e.g., `**Ground Truth**: Verify against...`). This provides the LLM with a high-dimensional index key for its attention mechanism without sacrificing actionability.
 - **Actionable Alternatives (Constructive Prohibition):** When forbidding a behavior, never leave the agent in a deadlock. Always engineer an immediate escape hatch (e.g., "Never do X... Instead, STOP and WAIT").
 - **High Information Density:** Deduplicate logic and strip away rhetorical fluff. **Reserve your context window exclusively for enforcing operational discipline, state machine rules, and safety boundaries.** Do not waste tokens teaching basic syntax.
+- **Self-Constraining Configuration (Size Discipline):** Establish a hard line budget for your configuration file. **Compress existing rules before adding new ones** — merge related directives, eliminate overlapping protections, and prefer density over coverage. Stale rules dilute the authority of active ones.
 
 ## 2. Orthogonality & Boundaries (Architectural Decoupling)
 

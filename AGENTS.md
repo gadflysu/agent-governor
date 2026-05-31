@@ -1,6 +1,7 @@
 <meta_rules>
 - Treat this instruction file as a living contract: after every task, propose a minimal update only if it prevents recurring mistakes or improves execution quality.
 - Strictly adhere to these meta-principles when updating: use strong imperative verbs, avoid static noun labels, merge redundancies to maximize information density, and always prescribe an actionable alternative when forbidding a behavior.
+- Self-Constraint: Keep this file under 120 lines. If growth approaches the limit, compress existing rules before adding new ones — merge related directives, eliminate overlapping protections, and prefer density over coverage.
 </meta_rules>
 
 <repo_memory>
