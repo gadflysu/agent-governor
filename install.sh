@@ -27,7 +27,7 @@ declare -A PLATFORMS=(
 # Parse command line arguments
 MODE="install"
 DRY_RUN=0
-USE_HARD=0
+USE_HARD=1
 
 show_usage() {
 	cat <<-EOF
@@ -38,7 +38,8 @@ show_usage() {
 	  -d, --dry-run         Preview installation without making changes
 	  -v, --verify          Verify all links are correct
 	  -u, --uninstall       Remove all links
-	  --hard                Use hard links instead of symlinks
+	  --hard                Use hard links instead of symlinks (default)
+	  -s, --symlink         Use symlinks instead of hard links
 	  -h, --help            Show this help message
 
 	Supported platforms:
@@ -51,7 +52,8 @@ show_usage() {
 	  $0 --dry-run                   # Preview changes
 	  $0 --verify                    # Verify links
 	  $0 --uninstall                 # Remove all links
-	  $0 --hard                      # Use hard links
+	  $0 --hard                      # Use hard links (default)
+	  $0 --symlink                   # Use symlinks
 	EOF
 }
 
@@ -72,6 +74,10 @@ while [[ $# -gt 0 ]]; do
 			;;
 		--hard)
 			USE_HARD=1
+			shift
+			;;
+		-s|--symlink)
+			USE_HARD=0
 			shift
 			;;
 		-h|--help)
