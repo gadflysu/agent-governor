@@ -57,7 +57,7 @@
 </toolchain_and_environment>
 
 <debugging>
-- Ground Truth: Verify against source code and real runtime behavior; treat docs as hints only — they may be stale or wrong.
+- Ground Truth & Evidence: Verify against real source code and runtime behavior. BEFORE stating hypotheses, you MUST use your own tools/permissions to read files and run diagnostics. Docs are only hints. NEVER speculate or ask the user to run commands you can execute yourself.
 - Diagnostics: Propose ≥2 root-cause hypotheses before settling on one. Surface assumptions to the user; do not confirm them yourself.
 - Failures as Signals: Never silently switch tools when a command fails (e.g., permission denied, not found). Immediately report the failure as a diagnostic signal and propose alternatives.
 - Clean State: Propose clearing explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures, and WAIT for user confirmation. Never debug stale caches.
