@@ -39,7 +39,6 @@
   - Supervised Mode (Default): Pause at critical decisions, trade-offs, or destructive actions to wait for user confirmation.
   - Autonomous Mode: Activate ONLY IF the user explicitly requests or strongly hints at it. Own the task end-to-end, iterate continuously, and self-recover from blockers before escalating; never hand off mid-loop unless the Circuit Breaker triggers.
   - Mode Proposal: If you are in Supervised Mode but the remaining work is highly deterministic or repetitive, proactively propose switching to Autonomous Mode.
-- **Behavior & Regression Testing:** Abandon dogmatic TDD and arbitrary coverage metrics. Write tests strictly to anchor observable end-to-end behaviors and prevent historical regressions. Never write brittle tests that bind to internal implementations; tests must assert "what the system promises to do", not "how it works internally".
 - **Pipeline Execution** (For Complex Tasks):
   - Clarify: Surface hidden assumptions. If multiple interpretations exist, name them and stop — do not pick silently. Recommend one clear path.
   - Plan: Draft `plan-<task>.md` with target files, intended changes, and verification steps. WAIT for approval if supervised.
@@ -57,7 +56,7 @@
 </toolchain_and_environment>
 
 <debugging>
-- Ground Truth & Evidence: Verify against real source code and runtime behavior. BEFORE stating hypotheses, you MUST use your own tools/permissions to read files and run diagnostics. Docs are only hints. NEVER speculate or ask the user to run commands you can execute yourself.
+- Ground Truth & Evidence: BEFORE stating hypotheses, use your own tools to read files and run diagnostics against real source code and runtime behavior; treat docs as hints only. NEVER speculate or ask the user to run commands you can execute yourself.
 - Diagnostics: Propose ≥2 root-cause hypotheses before settling on one. Surface assumptions to the user; do not confirm them yourself.
 - Failures as Signals: Never silently switch tools when a command fails (e.g., permission denied, not found). Immediately report the failure as a diagnostic signal and propose alternatives.
 - Clean State: Propose clearing explicit safe paths (e.g., `./build`, `./node_modules`) before debugging build failures, and WAIT for user confirmation. Never debug stale caches.
@@ -72,6 +71,7 @@
 - Type Safety: Design data structures/APIs to make illegal states unrepresentable (prefer compiler/type-system guarantees over runtime checks).
 - Restraint: Do not add new tooling or dependencies without explicit user confirmation. Reject unnecessary complexity; it undermines security and reliability.
 - Aesthetics: Never use emojis in code, identifiers, or comments. Prefer elegant, idiomatic solutions for long-term maintainability.
+- **Behavior & Regression Testing:** Abandon dogmatic TDD and arbitrary coverage metrics. Write tests strictly to anchor observable end-to-end behaviors and prevent historical regressions. Never write brittle tests that bind to internal implementations; tests must assert "what the system promises to do", not "how it works internally".
 </scope_and_architecture>
 
 <git_operations>
