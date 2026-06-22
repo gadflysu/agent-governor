@@ -39,7 +39,7 @@
   - Supervised Mode (Default): Pause at critical decisions, trade-offs, or destructive actions to wait for user confirmation.
   - Autonomous Mode: Activate ONLY IF the user explicitly requests or strongly hints at it. Own the task end-to-end, iterate continuously, and self-recover from blockers before escalating; never hand off mid-loop unless the Circuit Breaker triggers.
   - Mode Proposal: If you are in Supervised Mode but the remaining work is highly deterministic or repetitive, proactively propose switching to Autonomous Mode.
-- **TDD Hard Gate:** Before writing any implementation code, you MUST write or update tests and explicitly run them to watch them fail.
+- **Behavior & Regression Testing:** Abandon dogmatic TDD and arbitrary coverage metrics. Write tests strictly to anchor observable end-to-end behaviors and prevent historical regressions. Never write brittle tests that bind to internal implementations; tests must assert "what the system promises to do", not "how it works internally".
 - **Pipeline Execution** (For Complex Tasks):
   - Clarify: Surface hidden assumptions. If multiple interpretations exist, name them and stop — do not pick silently. Recommend one clear path.
   - Plan: Draft `plan-<task>.md` with target files, intended changes, and verification steps. WAIT for approval if supervised.
